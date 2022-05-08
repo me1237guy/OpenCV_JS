@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Face Detection</title>
+</head>
+<body>
+<p id="status">OpenCV.js is loading...</p>
+
+<div>
+  <div class="inputoutput">
+    <input type="file" id="fileInput" accept="image/*" name="file" /></div>
+    <p><button id="runBtn">Run</button></p>
+    <canvas id="canvasInput"  width="300" height="300"></canvas>
+    <canvas id="canvasOutput"  width="300" height="300"></canvas>
+</div>
+
+
+<script type="text/javascript">
+let inputElement = document.getElementById('fileInput');
+let runBtn = document.getElementById('runBtn');
+let img = new Image();
+let loading = true;
+inputElement.addEventListener('change', (e) => {
+    img.src = URL.createObjectURL(e.target.files[0]);
+}, false);
+img.onload = function() {
+    let inCanvas = document.getElementById('canvasInput')
+    let inCanvasCtx = inCanvas.getContext('2d')
+    inCanvasCtx.drawImage(img,0,0,img.width,img.height,0,0,inCanvas.width,inCanvas.height);  
+};
+runBtn.addEventListener('click', (e) => {
+    if(loading) {
+        return alert('opencv.js is loading...')
+    }
+    if(!img.src) {
+        return alert('Please Upload Image First')
+    }
+    let src = cv.imread('canvasInput');
+    let gray = new cv.Mat();
+    cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
+    cv.imshow('canvasOutput', gray);
+    src.delete(); 
+    gray.delete();    
+})
+function onOpenUtilsReady() {
+    let utils = new Utils('errorMessage');
+    utils.loadOpenCv(() => {
+    
+    document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+    loading = false;
+    
+});
+}
+
+</script>
+<script async src="../module/utils.js" onload="onOpenUtilsReady();" type="text/javascript"></script>
+<style>
+.inputoutput{
+    display: inline-block;
+}
+</style>
+</body>
+</html>
