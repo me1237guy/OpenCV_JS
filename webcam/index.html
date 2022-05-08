@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://docs.opencv.org/3.4/js_video_display.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Video Capture Example</title>
+
+</head>
+
+<h2>Video Capture Example</h2>
+
+<div>
+<div class="control"><button id="startAndStop">Start</button></div>
+
+</div>
+<p class="err" id="errorMessage"></p>
+<div>
+    <table cellpadding="0" cellspacing="0" width="0" border="0">
+    <tbody><tr>
+        <td>
+            <video id="videoInput" width="320" height="240"></video>
+        </td>
+        <td>
+            <canvas id="canvasOutput" width="320" height="240"></canvas>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <div class="caption">videoInput</div>
+        </td>
+        <td>
+            <div class="caption">canvasOutput</div>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody></table>
+</div>
+  
+</script><script src="module/adapter-5.0.4.js" type="text/javascript"></script>
+<script src="module/utils.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+let utils = new Utils('errorMessage');
+let streaming = false;
+let videoInput = document.getElementById('videoInput');
+let startAndStop = document.getElementById('startAndStop');
+let canvasOutput = document.getElementById('canvasOutput');
+let canvasContext = canvasOutput.getContext('2d');
+
+startAndStop.addEventListener('click', () => {
+    if (!streaming) {
+        utils.clearError();
+        utils.startCamera('qvga', onVideoStarted, 'videoInput');
+    } else {
+        utils.stopCamera();
+        onVideoStopped();
+    }
+});
+
+
+
+    const FPS = 30;
+function processVideo() {
+    let video = document.getElementById('videoInput');
+    let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+    let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
+    let cap = new cv.VideoCapture(video);
+    try {
+        if (!streaming) {
+            // clean and stop.
+            src.delete();
+            dst.delete();
+            return;
+        }
+        let begin = Date.now();
+        // start processing.
+        cap.read(src);
+        cv.rectangle(src, new cv.Point(10, 10), new cv.Point(100,50),
+                             new cv.Scalar(0, 255, 0));
+        //cv.rectangle(src, cv.Point(10,10), cv.Point(100,100), [0, 0, 255])
+        var font = cv.FONT_HERSHEY_SIMPLEX;
+         //cv.putText(src, "123", cv.Point(10, 20), cv.FONT_HERSHEY_COMPLEX, 0.8, [255, 255, 255], 2  )
+        let delay = 1000/FPS - (Date.now() - begin);
+        cv.putText(src, delay.toFixed(1), new cv.Point(10,40), font, 1, new cv.Scalar(255,0,0), 1,cv.LINE_AA)
+      
+         cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+      
+        // cv.circle(dst, cv.Point(447,63), 63, cv.Scalar(0,0,255), -1)
+        cv.imshow('canvasOutput', dst);
+        // schedule the next one.
+      
+        setTimeout(processVideo, delay);
+    } catch (err) {
+        utils.printError(err);
+    }
+};
+function onVideoStarted() {
+    streaming = true;
+    startAndStop.innerText = 'Stop';
+    videoInput.width = videoInput.videoWidth;
+    videoInput.height = videoInput.videoHeight;
+
+    // schedule the first one.
+    setTimeout(processVideo, 0);
+    //utils.executeCode('codeEditor');
+}
+
+function onVideoStopped() {
+    streaming = false;
+    canvasContext.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
+    startAndStop.innerText = 'Start';
+}
+
+utils.loadOpenCv(() => {
+    startAndStop.removeAttribute('disabled');
+});
+</script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
