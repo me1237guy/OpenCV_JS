@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+    </head>
+    <body>
+        <h3>Event Handling</h3>
+        <div id="result"><h3>cnt: 0</h3></div>
+        <div>
+            <span onclick="addone();"><h4>+1</h4></span>
+            <span onclick="minusone();"><h4>-1</h4></span>
+            <span onclick="resetcnt();"><h4>reset</h4></span>
+        </div>
+        <script>
+            let cnt = 0;
+            function showResult(){
+                document.getElementById("result").innerHTML = "<h3>cnt: "+cnt.toString()+"</h3>";
+            }
+            function addone(){
+                cnt++;
+                showResult();
+                // console.log(cnt);
+            }
+            function minusone(){
+                cnt--;
+                showResult();
+                // console.log(cnt);
+            }
+            function resetcnt(){
+                cnt = 0;
+                showResult();
+                // console.log(cnt);
+            }
+        </script>
+    </body>
+</html>
