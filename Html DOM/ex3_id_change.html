@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+    </head>
+    <body>
+        <h3>HTML DOM operation</h3>
+        <div id="hello" onclick="change();">Hello World</div>
+        <button
+            onclick="btnClick();"
+        >Click me</button>
+        <script>
+            function change(){
+                let elem = document.querySelector("#hello");
+                elem.innerHTML = "How are you today?";
+            }
+            function btnClick(){
+                let elem = document.querySelector("#hello");
+                elem.innerHTML = "I'm fine. Thanks.";
+                elem.className="text";
+            }
+        </script>
+    </body>
+</html>

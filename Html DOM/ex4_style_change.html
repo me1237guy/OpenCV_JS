@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+        <style>
+            .style1{text-decoration: underline;font-weight: bold;color: rebeccapurple;font-size: 20px;font-family: Verdana, Geneva, Tahoma, sans-serif;}
+            .style2{text-decoration: none;color:chocolate;font-size: 30px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+        </style>
+    </head>
+    <body>
+        <h3>HTML DOM operation</h3>
+        <div id="hello" onclick="change();">Hello World</div>
+        <button
+            onclick="btnClick();"
+        >Click me</button>
+        <script>
+            function change(){
+                let elem = document.querySelector("#hello");
+                elem.innerHTML = "How are you today?";
+                elem.className="style1";
+            }
+            function btnClick(){
+                let elem = document.querySelector("#hello");
+                elem.innerHTML = "I'm fine. Thanks.";
+                elem.className="style2";
+            }
+        </script>
+    </body>
+</html>
