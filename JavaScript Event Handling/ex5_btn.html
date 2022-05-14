@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+        <style>
+            .btn{
+                background-color:#EEEE00 ;            
+                padding: 8px;border-radius: 16px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Event Handling</h3>
+        <span class="btn"
+              onmouseenter="over(this);"
+              onmouseleave="leave(this);"
+        >click me</span>
+        <script>
+            function over(elem)
+            {
+                elem.style.backgroundColor = "#FFFF00";
+                
+            }
+            function leave(elem)
+            {
+                elem.style.backgroundColor = "#EEEE00"
+            }
+        </script>
+    </body>
+</html>
