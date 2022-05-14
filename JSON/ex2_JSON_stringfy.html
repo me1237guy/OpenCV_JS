@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: JSON(Javscript Object Notation)</title>
+        <script>
+            /*
+            var point = new Object();
+            point.x = 3;
+            point.y = 4;
+            point.get=function(){
+                alert(this.x+","+this.y)
+            };
+            */
+            var point = {
+                "x":3,
+                "y":4,
+                "get":function(){
+                // alert(this.x+","+this.y);
+                console.log(this.x+","+this.y);
+                }
+            };
+            
+            var ret = JSON.stringify(point);
+            console.log(ret);
+        </script>
+    </head>
+    <body>        
+
+    </body>
+</html>
