@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+    </head>
+    <body>
+        <h3>Event Handling</h3>
+        <div id="result">xxxx</div>
+        <button onclick="plusOne();">+1</button>    
+        <button onclick="minOne();">-1</button>    
+        <button onclick="reset();">reset</button>    
+    <script>
+        let cnt = 0;
+        function plusOne(){
+            cnt+=100;
+            item = document.querySelector("#result");
+            item.innerHTML = "cnt: " + cnt.toString();
+            // console.log(cnt);
+        }
+        function minOne(){
+            cnt--;
+            item = document.querySelector("#result");
+            item.innerHTML = "cnt: " + cnt.toString();
+            // console.log(cnt);
+        }
+        function reset(){
+            cnt=0;
+            item = document.querySelector("#result");
+            item.innerHTML = "cnt: " + cnt.toString();
+            // console.log(cnt);
+        }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+        <style>
+            .mystyle1{
+                background-color: crimson;
+                padding: 8px; border-radius: 16px;
+                cursor: pointer;  
+            }
+            .mystyle2{
+                background-color: blue;
+                padding: 8px; border-radius: 16px;
+                cursor: pointer;        
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Event Handling</h3>
+        <button>click me #1</button>
+        <span class="mystyle2"
+        onmouseenter="mouseover(this);"
+        onmouseleave="mouseleave(this);"
+        >click me #2</span>
+        <!-- <span class="btn">click me #2</span> -->
+        <script>
+            function mouseover(object){
+                // object.style.backgroundColor = "#0000aa";  // 黃色
+                object.className = "mystyle1";
+                // console.log(object);
+            }
+            function mouseleave(object){
+                object.className = "mystyle2";
+                // object.style.backgroundColor = "#0000ff";  // 藍色
+                // console.log(object);
+            }
+        </script>
+    </body>
+</html>
