@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8"/>
+        <title>javascript:AJAX Example</title>
+        <style>
+            table, th, td {
+              border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>AJAX Example</h3>
+        
+        <table id="result" style="width:50%">
+            
+           
+        </table>
+        <button onclick="btn_click();">按我</button>
+    </body>
+    <script>
+        function btn_click(){
+            fetch("https://cwpeng.github.io/live-records-samples/data/products.json").then(function(response){
+                return response.json();
+                // console.log(response.json());
+            }).then(function(data){
+                let result = document.querySelector("#result");
+                
+                // 清空先前資料
+                result.innerHTML = "<tr> <th>name</th> <th>price</th> <th>description</th> </tr>";
+
+                for(i=0; i<data.length;i++)
+                {
+                    let item = data[i];
+            //         <tr>
+            //   <th>Company</th>
+            //   <th>Contact</th>
+            //   <th>Country</th>
+            // </tr>
+                    result.innerHTML += "<tr><th>" + 
+                                       item.name + "</th><th>" +
+                                       item.price+ "</th><th>" +
+                                       item.description +
+                                       "</th></tr>";
+                    // console.log(data[i].price);
+                    // console.log(data[i].description);
+                    // console.log("---------------------------");
+                }
+                
+            });
+        }
+    </script>
+</html>

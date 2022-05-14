@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8"/>
+        <title>javascript:AJAX Example</title>
+    </head>
+    <body>
+        <h3>AJAX Example</h3>
+        <button onclick="btn_click();">按我</button>
+    </body>
+    <script>
+        function btn_click(){
+            fetch("https://cwpeng.github.io/live-records-samples/data/products.json").then(function(response){
+                return response.json();
+                // console.log(response.json());
+            }).then(function(data){
+                for(i=0; i<data.length;i++)
+                {
+                    console.log(data[i].name);
+                    console.log(data[i].price);
+                    console.log(data[i].description);
+                    console.log("---------------------------");
+                }
+
+            });
+        }
+    </script>
+</html>
