@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+        
+    </head>
+    <body>
+        <h3>HTML DOM operation</h3>
+        <button onclick="screen();">screen resolution</button>
+   
+    </body>
+    <script type="text/javascript">
+   
+        function screen(){
+            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            alert(window.innerWidth + "x" + window.innerHeight); 
+        }
+    </script>
+</html>
