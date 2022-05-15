@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Javascript Object</title>
+    </head>
+    <script>
+        
+        function btnclicked(){
+            alert('on clicked');
+            var player1=new Player("Ryan", 100);
+            var player2=new Player("Irene", 80);
+            player1.info();
+            player1.fight();
+            player1.info();
+            player1.rest();
+            player1.info();  
+            player2.info(); 
+            player2.rest();
+            player2.info(); 
+        }
+        /*  建構式 */
+        function Player(name, hp)
+        {
+            this.name = name;
+            this.hp = hp;
+            this.fight=function(){
+                this.hp-=2;
+                alert(this.name+" : is fighting...");
+            }
+            this.rest=function(){
+                this.hp++;
+                alert(this.name+" : is taking a rest...");
+            }
+            this.info=function(){
+                alert(this.name+ " : "+ this.hp);
+            }
+        }
+    </script>
+    <body>
+        <button onclick="btnclicked();">Run</button>
+    </body>
+</html>
