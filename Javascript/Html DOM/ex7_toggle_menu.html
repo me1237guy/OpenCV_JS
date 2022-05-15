@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Toggle Menu</title>
+    </head>
+    <script>
+        function toggleMenu()
+        {
+            var menu = document.getElementById("menu");
+            if(menu.style.display=="none")
+            {
+                menu.style.display="block";
+            }else{
+                menu.style.display="none";
+            }
+        }
+
+    </script>
+    <body>
+        <button onclick="toggleMenu();">menu</button>
+        <ul id="menu">
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+        </ul>
+
+    </body>
+</html>
