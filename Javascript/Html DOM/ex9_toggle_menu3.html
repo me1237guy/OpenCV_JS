@@ -8,6 +8,14 @@
         .hide{display: none;}
     </style>
     <script>
+        function onmouse_over(element)
+        {
+            element.style.color = "red";
+        }
+        function onmouse_leave(element)
+        {
+            element.style.color="black";
+        }
         function toggleMenu(number)
         {
             var menu = document.getElementById("menu-"+number);
@@ -36,7 +44,8 @@
         </ul>
         <div onclick="toggleMenu(3);">選單標題 3</div>
         <ul id="menu-3">
-            <li>item 3.1</li>
+            <li onmouseover="onmouse_over(this);"
+                onmouseleave="onmouse_leave(this);">item 3.1</li>
             <li>item 3.2</li>
             <li>item 3.3</li>
         </ul>

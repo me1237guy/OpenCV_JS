@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>javascript: Event Handling</title>
+    <script>
+        function init(){
+            var btn = document.getElementById("btn");
+            var handler = function(e){
+                alert(e.clientX +","+e.clientY);
+            }
+            btn.addEventListener("click"/* 事件名稱 */, handler);
+         
+            // var handler2 = function(elem)
+            // {
+            //     console.log(elem.id);
+            // }
+
+            // btn.addEventListener("focus", handler2(btn));
+
+        }
+    </script>
+    </head>
+    <body>
+        <h3>Event Handling</h3>
+        <button id="btn" onclick="init();">Click me</button>
+    </body>
+</html>
