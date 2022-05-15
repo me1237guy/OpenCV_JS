@@ -1,0 +1,38 @@
+/* 
+    電腦: 1200 px以上: 4欄，固定尺寸 
+    4*(270 px + 2*10 px) ~ 1200 px
+*/
+main{
+    display: flex;
+    /*
+        關鍵: flex-wrap
+    */
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #cccccc;
+}
+main>.item{
+    /* 自動填滿容器 */
+    flex:   auto;
+    /* 固定尺寸 
+        flex: none;
+        width:270px;  
+    */
+    margin: 10px;
+    background-color: #ffcccc;
+}
+/* 
+    平板: 500 px ~ 1200 px: 2欄，彈性尺寸
+    2*45% 
+*/
+@media (max-width:1200px) {
+    main>.item{
+        width: 45%;
+    }
+    
+}
+@media (max-width:500px) {
+    main>.item{
+        width: 90%;
+    }
+}
