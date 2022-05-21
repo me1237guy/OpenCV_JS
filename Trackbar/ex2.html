@@ -21,12 +21,14 @@
             <div class="caption">dstImg(輸出影像)</div>
             <input type="range" id="trackbar" value="50" min="0" max="100" step="1" oninput="trackbar_callback(this);">
             <input type="text" id="weightValue" size="3" value="50"/>
+            <canvas id="dstImg"></canvas>
         </div>
         <script>
             let imgSrc1 = document.getElementById("imgSrc1");
             let inputFile1 = document.getElementById("inputFile1");
             let imgSrc2 = document.getElementById("imgSrc2");
             let inputFile2 = document.getElementById("inputFile2");
+
             inputFile1.addEventListener("change", (event)=>{
                 console.log(event.target.files[0]);
                 imgSrc1.src = URL.createObjectURL(event.target.files[0]);
@@ -35,11 +37,28 @@
                 console.log(event.target.files[0]);
                 imgSrc2.src = URL.createObjectURL(event.target.files[0]);        
             });
+            // image processing
+            function imageProc()
+            {
+                let trackbar = document.getElementById('trackbar');
+                let weight = trackbar.value;
+                let imgInp1 = cv.imread(imgSrc1);
+                let imgInp2 = cv.imread(imgSrc2);
+                let imgOut = new cv.Mat();
+                let alpha = weight/100;
+                let beta = 1-alpha;
+                cv.addWeighted(imgInp1, alpha, imgInp2, beta, 0.0, imgOut, -1);
+                cv.imshow('dstImg', imgOut);
+                imgInp1.delete();
+                imgInp2.delete();
+                imgOut.delete();
+            }
             // console.log(inputFile1);
             function trackbar_callback(trackbar){           
                 let trackbar_value = trackbar.value;
                 let weightValue = document.getElementById('weightValue');
                 weightValue.setAttribute('value', trackbar_value); 
+                imageProc();
             }
 
             function onLoadOpenCV(){
