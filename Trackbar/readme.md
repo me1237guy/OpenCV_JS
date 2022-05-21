@@ -1,3 +1,4 @@
+Snapshot
 ![snapshot](snapshot.jpg)
 
 #Add a Trackbar to Your Application
