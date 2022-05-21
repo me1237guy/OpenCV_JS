@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add a trackbar</title>
+    </head>
+    <body>
+        <div id="status">OpenCV is loading...</div>
+        
+        <script>
+            function onLoadOpenCV(){
+                var obj = document.querySelector("#status");
+                obj.innerHTML = "OpenCV is ready.";
+                console.log('OpenCV is ready.');
+            }
+
+        </script>
+        <script asyn src="opencv.js" onload="onLoadOpenCV();" type="text/javascript"></script>
+    </body>
+</html>
