@@ -8,16 +8,20 @@
         <div id="status">OpenCV is loading...</div>
         <!-- 上傳圖片區域 -->
         <div class="InputOutput">
-            <div class ="caption">srcImg1<input type="file" id="inputFile1"></div>
+            <div class ="caption">srcImg1(輸入影像1)<input type="file" id="inputFile1"></div>
             <!-- 圖像展示區 -->
             <img id="imgSrc1" src="apple.png" alt="找不到影像"/>
         </div>
         <div class="InputOutput">
-            <div class="caption">srcImg2<input type="file" id="inputFile2"></div>
+            <div class="caption">srcImg2(輸入影像2)<input type="file" id="inputFile2"></div>
              <!-- 圖像展示區 -->
              <img id="imgSrc2" src="orange.png" alt="找不到影像"/>
         </div>
-
+        <div class="InputOutput">
+            <div class="caption">dstImg(輸出影像)</div>
+            <input type="range" id="trackbar" value="50" min="0" max="100" step="1" oninput="trackbar_callback(this);">
+            <input type="text" id="weightValue" size="3" value="50"/>
+        </div>
         <script>
             let imgSrc1 = document.getElementById("imgSrc1");
             let inputFile1 = document.getElementById("inputFile1");
@@ -32,10 +36,12 @@
                 imgSrc2.src = URL.createObjectURL(event.target.files[0]);        
             });
             // console.log(inputFile1);
+            function trackbar_callback(trackbar){           
+                let trackbar_value = trackbar.value;
+                let weightValue = document.getElementById('weightValue');
+                weightValue.setAttribute('value', trackbar_value); 
+            }
 
-            // function onLoadImage1(e){
-
-            // }
             function onLoadOpenCV(){
                 var obj = document.querySelector("#status");
                 obj.innerHTML = "OpenCV is ready.";
