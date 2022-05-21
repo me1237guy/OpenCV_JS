@@ -1,3 +1,5 @@
+<img src="snapshot.jpg"></img>
+
 #Add a Trackbar to Your Application
 https://docs.opencv.org/3.3.1/d5/df3/tutorial_js_trackbar.html
 
