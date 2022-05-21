@@ -6,8 +6,36 @@
     </head>
     <body>
         <div id="status">OpenCV is loading...</div>
-        
+        <!-- 上傳圖片區域 -->
+        <div class="InputOutput">
+            <div class ="caption">srcImg1<input type="file" id="inputFile1"></div>
+            <!-- 圖像展示區 -->
+            <img id="imgSrc1" src="apple.png" alt="找不到影像"/>
+        </div>
+        <div class="InputOutput">
+            <div class="caption">srcImg2<input type="file" id="inputFile2"></div>
+             <!-- 圖像展示區 -->
+             <img id="imgSrc2" src="orange.png" alt="找不到影像"/>
+        </div>
+
         <script>
+            let imgSrc1 = document.getElementById("imgSrc1");
+            let inputFile1 = document.getElementById("inputFile1");
+            let imgSrc2 = document.getElementById("imgSrc2");
+            let inputFile2 = document.getElementById("inputFile2");
+            inputFile1.addEventListener("change", (event)=>{
+                console.log(event.target.files[0]);
+                imgSrc1.src = URL.createObjectURL(event.target.files[0]);
+            });
+            inputFile2.addEventListener("change", (event) => {
+                console.log(event.target.files[0]);
+                imgSrc2.src = URL.createObjectURL(event.target.files[0]);        
+            });
+            // console.log(inputFile1);
+
+            // function onLoadImage1(e){
+
+            // }
             function onLoadOpenCV(){
                 var obj = document.querySelector("#status");
                 obj.innerHTML = "OpenCV is ready.";
