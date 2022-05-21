@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <meta charset ="UTF-8"> 
+    <title> Insert title here </title> 
+    <!--將圖片設置為左浮動--> 
+    <style type ="text/css"> 
+        .InputOutput { 
+            float : left ; 
+            margin : 10px ; 
+        } 
+    </style> 
+</head> 
+<body>
+    <!--若opencv.js 文件加載成功，顯示opencv.js is ready. --> 
+    <p id ="status"> opencv.js is loading... </p>
+    
+    <!--上傳圖片區域--> 
+    <div class ="InputOutput"> 
+        <!--文件選擇框--> 
+        <div class ="caption"> srcImg1 <input type ="file" id ="inputFile1" /></div> 
+        <!--圖像展示區--> 
+        <img id ="srcImg1" alt ="No Image" /> 
+    </div> 
+    <div class ="InputOutput">
+        <div class ="caption"> srcImg2 <input type ="file" id ="inputFile2" /></div> 
+        <img id ="srcImg2" alt ="No Image" /> 
+    </div>
+    
+    <!--顯示結果區域--> 
+    <div class ="InputOutput"> 
+        <div class ="caption"> dstImg
+           <!--滑動條--> 
+          Weight: <input type ="range" id ="trackbar" value ="50" min ="0" max ="100" step ="1" oninput="callback();"> 
+            <!--該區域顯示滑動條數值--> 
+            <input type ="text" id ="weightValue" size="3" value ="50" /> 
+        </div> 
+        <!--結果展示--> 
+        <canvas id ="dstImg"></canvas> 
+    </div>
+    
+    <!--功能實現代碼--> 
+    <script type ="text/javascript"> 
+        // 讀入圖片 
+        let imgElement1 = document.getElementById( "srcImg1" );
+        let imgElement2 = document.getElementById( "srcImg2" );
+        let fileElement1 = document.getElementById( "inputFile1" );
+        let fileElement2 = document.getElementById( "inputFile2" );
+        fileElement1.addEventListener("change", (e) => {imgElement1.src = URL.createObjectURL(e.target.files[0]);},
+                 false);
+        fileElement2.addEventListener("change", (e) => {imgElement2.src = URL.createObjectURL(e.target.files[0]);},
+                 false);        
+        
+         // 滑動條回調函數
+         function callback(){
+            let trackbar = document.getElementById( "trackbar" );
+            let weightValue = document.getElementById("weightValue");
+            weightValue.setAttribute("value", trackbar.value);
+            let alpha = trackbar.value / trackbar.max; 
+            let beta = ( 1.0  - alpha );
+            let src1 = cv.imread(imgElement1);
+            let src2 = cv.imread(imgElement2);
+            let dst =  new cv.Mat();
+            cv.addWeighted( src1, alpha, src2, beta, 0.0 , dst, - 1 );
+            cv.imshow('dstImg', dst);
+            // weightValue.delete();
+            // trackbar.delete();
+            dst.delete();
+            src1.delete();
+            src2.delete();
+        }
+        
+        function onOpenCvReady(){
+            document.getElementById( "status" ).innerHTML = " opencv.js is ready. " ;
+        }
+    </script> 
+    <script async src ="opencv.js" onload ="onOpenCvReady();" type ="text/javascript"></script> 
+</body> 
+</html>
