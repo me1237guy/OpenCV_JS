@@ -1,23 +1,25 @@
 body{
+
     margin:0px;
+
 }
 nav{
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 nav>.p1{
-    width: 33%;
-    flex:none;
+    flex:1;
     background-color:antiquewhite;
 }
 nav>.p2{
-    width: 33%;
-    flex:none;
+    flex:1;
     background-color: blanchedalmond;
 }
 
 nav>.p3{
-    flex:auto;
+    flex:1;
     background-color:beige;
 }
 /* nav2{
