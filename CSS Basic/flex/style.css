@@ -1,24 +1,22 @@
 .container{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .container div{
     border: 1px solid rgb(200, 200, 200);
     padding:10px;
-    width: 50px;
+    width: 200px;
 }
 
 .box-1{
-    flex:1;
-    order:2;
+
 }
 
 .box-2{
-    flex:2;
-    order:1;
+
 }
 
 .box-3{
-    flex:1;
-    order:3;
+
 }
