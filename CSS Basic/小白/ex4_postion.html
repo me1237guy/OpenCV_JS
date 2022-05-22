@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Set position</title>
+    </head>
+    <body style="height: 1500px;">
+        <div style="position:fixed; top:20px; right:0px; width:100px; height: 100px; background-color:blue;"></div>
+        <div style="width:200px; height: 200px; background-color:red"></div>
+        <div style="position:relative;top:-120px; left: 20px; width:300px;height:100px; background-color: green;"></div>
+        
+        <div style="padding: 30px; border: 5px solid red">
+            <div style="padding: 30px; border: 5px dashed blue">
+                <div style="position: absolute; top:30px; right:0px; width:100px; height:20px; background-color:aqua; padding: 10px;">absolute</div>
+            </div>
+        </div>
+        <!-- 外層有定位 -->
+        <div style="padding: 30px; border: 5px solid red">
+            <div style="position: relative; padding: 30px; border: 5px dashed blue">
+                <div style="position: absolute; top:30px; left:0px; width:100px; height:20px; background-color:aqua; padding: 10px;">absolute</div>
+            </div>
+        </div>
+        <!-- 外層有定位 -->
+        <div style="position: relative; padding: 30px; border: 5px solid red">
+            <div style="padding: 30px; border: 5px dashed blue">
+                <div style="position: absolute; top:30px; left:0px; width:100px; height:20px; background-color:aqua; padding: 10px;">absolute</div>
+            </div>
+        </div>
+    </body>
+</html>
