@@ -13,5 +13,9 @@ flex排列順序
 ![display_flex_order](./snapshot/5_display_flex_order.JPG)
 自動換行
 ![display_flex_wrap](./snapshot/6_flex_wrap.JPG)
-行方向排列
+排列方向
 ![display_flex_direction](./snapshot/7_flex_direction.JPG)
+排一行(自動換行)
+![display_flex_rowwise](./snapshot/8_flex_direction_one_column.JPG)
+排一列(自動換列)
+![display_flex_columnwise](./snapshot/9_flex_direction_one_row.JPG)
