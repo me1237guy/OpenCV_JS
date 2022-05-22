@@ -1,0 +1,34 @@
+body{
+    margin:0px;
+}
+nav{
+    justify-content: center;
+    display: flex;
+}
+nav>.p1{
+    width: 33%;
+    flex:none;
+    background-color:antiquewhite;
+}
+nav>.p2{
+    width: 33%;
+    flex:none;
+    background-color: blanchedalmond;
+}
+
+nav>.p3{
+    flex:auto;
+    background-color:beige;
+}
+/* nav2{
+    justify-content: center;
+    display: flex;
+}
+nav2>.p1{
+    width: 50%;
+    flex: none;
+}
+nav2>.p2{
+    width: 50%;
+    flex: none;
+} */
