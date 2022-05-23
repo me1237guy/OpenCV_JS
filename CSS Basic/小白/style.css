@@ -1,3 +1,13 @@
+body{
+    height: 1500px;
+}
+.food{
+    color:red;
+}
+.person{
+    color:blue;
+}
+
 p{
     color:blue;
     background-color: wheat;
@@ -7,4 +17,36 @@ p{
 }
 h1{
     color:aquamarine;
+}
+/* 
+html: id="id名稱"
+css:  # + id名稱{}   
+*/
+#css-h1{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    font-size: medium;
+    top:0px;
+    position: fixed;
+    left:0px;
+    float: left;
+    width: 100px;
+    color:rgb(43, 226, 116);
+    background-color: blueviolet;
+}
+#id1, .class-1{
+    background-color: gray;
+}
+ul li{
+    background-color:blanchedalmond;
+}
+ul a {
+    background-color:aquamarine;
+}
+p:hover{
+    background-color: chartreuse;
+}
+ul li:hover{
+    background-color: chartreuse; 
 }
