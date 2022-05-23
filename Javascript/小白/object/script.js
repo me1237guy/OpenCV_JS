@@ -1,0 +1,45 @@
+var person = {
+    name:"小白",
+    age:23,
+    is_male:true,
+    print_name:function(){
+        document.write(this.name); 
+    }
+};
+document.write(person);
+document.write("</br>");
+person.print_name();
+document.write("</br>");
+var movie = {
+    title:"奇異博士2：失控多重宇宙",
+    maker:"迪士尼",
+    duration:"02時06分",
+    actors:[
+        {
+            name:"班尼迪克康柏拜區",
+            birth:"1976-07-19",
+            is_male:true
+        },
+        {
+            name:"伊莉莎白歐森",
+            birth:"1989-02-16",
+            is_male:false
+        }
+    ]
+}
+document.write("<hr>")
+document.write(movie.title);
+document.write("</br>");
+document.write(movie.maker);
+document.write("</br>");
+document.write(movie.duration);
+document.write("</br>");
+for(i=0;i<movie.actors.length;i++){
+    document.write(movie.actors[i].name);
+    document.write(movie.actors[i].birth);
+    if(movie.actors[i].is_male)
+    document.write("男性");
+    else
+    document.write("女性");  
+    document.write("</br>");
+}
